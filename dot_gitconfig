@@ -1,0 +1,15 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Jizu Sun
+	email = jizu.sun@oqton.com
+[credential]
+	helper = osxkeychain
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[diff]
+	colorMoved = zebra
+[init]
+	defaultBranch = main

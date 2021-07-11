@@ -7,6 +7,7 @@ brew 'terraform'
 brew 'hugo'
 brew 'mas'
 brew 'rclone'
+brew 'nvm'
 
 cask 'raycast'
 cask 'wechat'

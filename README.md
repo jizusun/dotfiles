@@ -6,3 +6,10 @@
 - [ Introduction to Dotfiles ](https://dev.to/jogendra/intro-to-dotfiles-4bb8)
 - [Personalizing Codespaces for your account](https://docs.github.com/en/codespaces/setting-up-your-codespace/personalizing-codespaces-for-your-account)
 - [https://wiki.archlinux.org/index.php/Dotfiles](https://wiki.archlinux.org/index.php/Dotfiles)
+
+
+## Usage
+
+```sh
+brew bundle --file ~/Brewfile -v
+```
