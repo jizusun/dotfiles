@@ -10,6 +10,16 @@
 - [erebe/personal-server](https://github.com/erebe/personal-server#provider)
 ## Usage
 
+### To fix `brew`
+- [Homebrew Multi User Setup](https://medium.com/@leifhanack/homebrew-multi-user-setup-e10cb5849d590w)
+
+```sh
+sudo chmod -R g+w $(brew --prefix)
+sudo chmod -R g+w $(brew --prefix)/*
+```
+
+### Bootstrap
+
 ```sh
 sh -c "$(curl -fsLS git.io/chezmoi)"
 mv ./bin/chezmoi /usr/local/bin/chezmoi
@@ -31,8 +41,11 @@ encryption = "age"
 
 Also 
 ```
-brew bundle --file ~/Brewfile -v
+brew tap filippo.io/age https://filippo.io/age
+brew install age
+brew install bitwarden-cli
 chezmoi -v apply
+brew bundle --file ~/Brewfile -v
 
 bw config server https://self-hosted-bitwarden.com
 bw unlock
