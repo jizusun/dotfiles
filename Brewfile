@@ -1,4 +1,3 @@
-brew 'rclone'
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 brew 'reattach-to-user-namespace'
 brew 'jump'
@@ -6,9 +5,10 @@ brew 'watch'
 brew 'tmux'
 brew 'terraform'
 brew 'hugo'
+brew 'mas'
+brew 'rclone'
 
 cask 'raycast'
-brew 'mas'
 cask 'wechat'
 cask 'cyberduck'
 cask 'multipass'
