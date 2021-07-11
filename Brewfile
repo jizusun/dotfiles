@@ -1,3 +1,8 @@
+# https://github.com/Homebrew/homebrew-bundle
+
+# https://github.com/FiloSottile/age
+tap "filippo.io/age","https://filippo.io/age"
+brew 'age'
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 brew 'reattach-to-user-namespace'
 brew 'jump'
@@ -8,6 +13,7 @@ brew 'hugo'
 brew 'mas'
 brew 'rclone'
 brew 'nvm'
+brew 'bitwarden-cli'
 
 cask 'raycast'
 cask 'wechat'
