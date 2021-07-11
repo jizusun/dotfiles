@@ -11,15 +11,32 @@
 ## Usage
 
 ```sh
+sh -c "$(curl -fsLS git.io/chezmoi)"
+mv ./bin/chezmoi /usr/local/bin/chezmoi
+chezmoi init https://github.com/jizusun/dotfiles.git
+chezmoi edit-config
+```
+with content
+
+```
+[data]
+    email = "xxx@email.com"
+    name = "My name"
+
+encryption = "age"
+[age]
+    identity = "/Users/jizusun/key.txt"
+    recipient = "xxx"
+```
+
+Also 
+```
 brew bundle --file ~/Brewfile -v
 chezmoi -v apply
-
 
 bw config server https://self-hosted-bitwarden.com
 bw unlock
 
-
- chezmoi apply --verbose --destination $HOME/tmphome --dry-run
-
+chezmoi apply --verbose --destination $HOME/tmphome --dry-run
 ```
 
