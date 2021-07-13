@@ -161,4 +161,4 @@ function oqton_cli_ops {
 # export BROWSER="firefox developer edition"
 
 # for `chezmoi edit`
-export EDITOR=code
+# export EDITOR=code
