@@ -39,6 +39,10 @@ encryption = "age"
     recipient = "xxx"
 ```
 
+- [Encrypt whole files with age](https://www.chezmoi.io/docs/how-to/#encrypt-whole-files-with-age)
+- [github.com - age](https://github.com/FiloSottile/age)
+
+
 Also 
 ```
 brew tap filippo.io/age https://filippo.io/age
