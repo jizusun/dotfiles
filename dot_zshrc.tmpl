@@ -112,7 +112,15 @@ source $ZSH/oh-my-zsh.sh
 ###### Customization ######
 
 # proxy from Clash
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+
+{{ if contains "WSL" .chezmoi.kernel.osrelease -}}
+  CLASH_PROXY=172.17.217.1:7890
+{{ else -}}
+  CLASH_PROXY=172.0.0.1:7890
+{{ end -}}
+
+export https_proxy=http://$CLASH_PROXY http_proxy=http://$CLASH_PROXY all_proxy=socks5://$CLASH_PROXY
+
 
 # Google Cloud
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
