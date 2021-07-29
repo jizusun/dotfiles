@@ -3,11 +3,13 @@
 	name = {{ .name }}
 	email = {{ .email }}
 
-{{ if (eq .chezmoi.os "darwin") }}
+# https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
 [credential]
+{{ if (eq .chezmoi.os "darwin") }}
 	helper = osxkeychain
+{{ else if (eq .chezmoi.os "linux") }}
+	helper = cache --timeout=3600
 {{ end }}
-
 
 [pull]
 	rebase = true
