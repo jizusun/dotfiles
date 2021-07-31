@@ -29,20 +29,34 @@ fi
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-
+# jump
 go get github.com/gsamokovarov/jump
 
-echo "[-] Download fonts [-]"
-mkdir ~/.fonts 
-fc-cache -fv
-
+# add font for power10k
 if ! [ -x "$(command -v fc-cache)" ]; then
+    echo "[-] Download fonts [-]"
     sudo apt-get install fontconfig
     wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
     mkdir -p  ~/.local/share/fonts/ 
     mv MesloLGS\ NF\ Regular.ttf ~/.local/share/fonts 
     fc-cache -vf ~/.local/share/fonts/ 
+    echo "done!"
 fi
 
-echo "done!"
+CODE_DIR=$HOME/Code
+mkdir -p $CODE_DIR
+# update apt 
+echo "Input password for: sudo apt-get update"
+sudo apt update && sudo apt install nftables
+# clash
+git clone https://github.com/Kr328/clash-premium-installer $CODE_DIR/clash-premium-installer
+sudo bash $CODE_DIR/clash-premium-installer/installer.sh install
+
+# yacd
+if ! [ -d "$HOME/.config/clash/public" ]; then 
+    mkdir -p ~/.config/clash && cd ~/.config/clash
+    wget https://github.com/haishanh/yacd/releases/download/v0.3.3/yacd.tar.xz 
+    tar -xf yacd.tar.xz -C ~/.config/clash/
+fi
+
 {{ end -}}
