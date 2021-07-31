@@ -121,12 +121,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 
 # proxy from Clash
-{{ if contains "WSL" .chezmoi.kernel.osrelease -}}
-  HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
-  CLASH_PROXY="$HOST_IP:7890"
-{{ else -}}
-  CLASH_PROXY=172.0.0.1:7890
-{{ end -}}
+CLASH_PROXY=127.0.0.1:7890
 export https_proxy=http://$CLASH_PROXY http_proxy=http://$CLASH_PROXY all_proxy=socks5://$CLASH_PROXY
 
 # eval $(ssh-agent)
