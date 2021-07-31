@@ -1,27 +1,14 @@
-#xxx Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-{{ if (eq .chezmoi.os "darwin") }}
-  export ZSH="/Users/jizusun/.oh-my-zsh"
-{{ else if (eq .chezmoi.os "linux") }}
-  export ZSH="/home/jizu/.oh-my-zsh"
-{{ end }}
+export ZSH="/home/jizu/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -83,7 +70,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode zsh-autosuggestions)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,77 +99,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-###### Customization ######
-
-# Go
-export PATH=$PATH:/usr/local/go/bin
-# Go bin
-export PATH=$PATH:$(go env GOPATH)/bin
-
-# proxy from Clash
-{{ if contains "WSL" .chezmoi.kernel.osrelease -}}
-  HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
-  CLASH_PROXY="$HOST_IP:7890"
-{{ else -}}
-  CLASH_PROXY=172.0.0.1:7890
-{{ end -}}
-export https_proxy=http://$CLASH_PROXY http_proxy=http://$CLASH_PROXY all_proxy=socks5://$CLASH_PROXY
-
-# eval $(ssh-agent)
-# ssh-add ~/.ssh/id_rsa
-
-
-# Google Cloud
-if [ -x "$(command -v gcloud)" ]; then
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi
-
-# https://github.com/gsamokovarov/jump
-eval "$(jump shell)"
-
-# kubectl prompt 
-# autoload -U colors; colors
-# source $HOME/Work/zsh-kubectl-prompt/kubectl.zsh
-# RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-
-# kubectl
-alias k=kubectl
-
-
-# fix lock problem with macOS
-function fix-in-use {
-  xattr -d com.apple.FinderInfo $1
-}
-
-
-# https://github.com/pyenv/pyenv
-if  [ -x "$(command -v pyenv )" ]; then
-  eval "$(pyenv init -)"
-fi
-
-# poetry
-export PATH="$HOME/.poetry/bin:$PATH"
-# brew install java
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-# https://github.com/nvm-sh/nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Oqton shell utils
-function oqton_cli_ops {
-  source $HOME/Code/Oqton/container-cli-ops/.bashrc
-}
-
-# create-react-app
-# export BROWSER="firefox developer edition"
-
-# for `chezmoi edit`
-export EDITOR=vim
-# export EDITOR=code
