@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.sh.tmpl": "shellscript",
+        "*zshrc.tmpl": "shellscript"
+    }
+}

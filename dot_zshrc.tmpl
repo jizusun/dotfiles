@@ -10,7 +10,11 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jizusun/.oh-my-zsh"
+{{ if (eq .chezmoi.os "darwin") }}
+  export ZSH="/Users/jizusun/.oh-my-zsh"
+{{ else if (eq .chezmoi.os "linux") }}
+  export ZSH="/home/jizu/.oh-my-zsh"
+{{ end }}
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -113,7 +117,8 @@ source $ZSH/oh-my-zsh.sh
 
 # proxy from Clash
 {{ if contains "WSL" .chezmoi.kernel.osrelease -}}
-  CLASH_PROXY=172.17.217.1:7890
+  HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
+  CLASH_PROXY="$HOST_IP:7890"
 {{ else -}}
   CLASH_PROXY=172.0.0.1:7890
 {{ end -}}
