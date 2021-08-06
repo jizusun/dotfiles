@@ -8,7 +8,8 @@
 {{ if (eq .chezmoi.os "darwin") }}
 	helper = osxkeychain
 {{ else if (eq .chezmoi.os "linux") }}
-	helper = cache --timeout=144000
+	helper = store
+	# helper = cache --timeout=144000
 {{ end }}
 
 [pull]
