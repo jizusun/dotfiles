@@ -8,8 +8,9 @@
 {{ if (eq .chezmoi.os "darwin") }}
 	helper = osxkeychain
 {{ else if (eq .chezmoi.os "linux") }}
-	helper = store
+	# helper = store
 	# helper = cache --timeout=144000
+	helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe
 {{ end }}
 
 [pull]
@@ -20,3 +21,8 @@
 	colorMoved = zebra
 [init]
 	defaultBranch = main
+
+[http]
+	sslCert=/home/jizu/Code/work/code1-cert/code1.crt
+	sslverify = false
+
