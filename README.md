@@ -35,8 +35,13 @@ with content
 
 encryption = "age"
 [age]
-    identity = "/Users/jizusun/key.txt"
-    recipient = "xxx"
+    identity = "/home/jizu/key.txt"
+    recipient = "age1....."
+```
+And install with
+
+```
+pacman -S age
 ```
 
 - [Encrypt whole files with age](https://www.chezmoi.io/docs/how-to/#encrypt-whole-files-with-age)
