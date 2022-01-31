@@ -190,3 +190,18 @@ alias ggovm="$GOPATH/bin/g";
 # g-install: do NOT edit, see https://github.com/stefanmaric/g
 
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/Code/idea-IU-213.5744.223/bin:$PATH
+
+x2go() {
+    export DISPLAY=`pgrep -a x2goagent | rev | cut -d " " -f 1 | rev`
+}
+
+vcxserver() {
+	#  https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242
+	export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+	export DISPLAY="`sed -n 's/nameserver //p' /etc/resolv.conf`:0"
+	export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
+}
+
+
+x2go
